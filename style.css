@@ -1,0 +1,1348 @@
+/* ===================================================
+   ZAMONAVIY MOBIL ILOVA USLUBI (DARK & NEON LIME)
+   BYUDJET, KIRIM VA CHIQIM UYG'UNLIGI
+   =================================================== */
+
+:root {
+  /* DARK MODE (Standart) */
+  --bg-page: #05070a;
+  --bg-main: #0c0f14;
+  --bg-card: #151a21;
+  --bg-card-secondary: #1d232c;
+  --border-color: #272f3b;
+  --accent-lime: #c5f13b;
+  --accent-lime-hover: #b0dc28;
+  --accent-lime-dim: rgba(197, 241, 59, 0.15);
+  --text-main: #ffffff;
+  --text-muted: #8b95a5;
+  --text-dark: #0c0f14;
+  --color-income: #10b981;
+  --color-income-dim: rgba(16, 185, 129, 0.15);
+  --color-expense: #f87171;
+  --color-expense-dim: rgba(248, 113, 113, 0.15);
+  --danger-color: #ef4444;
+  --danger-dim: rgba(239, 68, 68, 0.12);
+  --dock-bg: #ffffff;
+  --dock-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --dock-active-bg: #0c0f14;
+  --dock-active-color: #c5f13b;
+  --dock-inactive: #64748b;
+  --app-border: 4px solid #1f2530;
+  --app-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-full: 9999px;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* YORUG' REJIM (LIGHT MODE) */
+body.light-mode {
+  --bg-page: #e2e8f0;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-secondary: #f1f5f9;
+  --border-color: #e2e8f0;
+  --accent-lime: #16a34a;
+  --accent-lime-hover: #15803d;
+  --accent-lime-dim: rgba(22, 163, 74, 0.14);
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-dark: #0c0f14;
+  --color-income: #059669;
+  --color-income-dim: rgba(5, 150, 105, 0.12);
+  --color-expense: #dc2626;
+  --color-expense-dim: rgba(220, 38, 38, 0.12);
+  --danger-color: #dc2626;
+  --danger-dim: rgba(220, 38, 38, 0.1);
+  --dock-bg: #ffffff;
+  --dock-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+  --dock-active-bg: #0f172a;
+  --dock-active-color: #22c55e;
+  --dock-inactive: #94a3b8;
+  --app-border: 4px solid #cbd5e1;
+  --app-shadow: 0 10px 40px rgba(15, 23, 42, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mobil ilova ramkasi */
+.mobile-app {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  min-height: 600px;
+  background-color: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--app-shadow);
+  transition: background-color 0.3s ease;
+}
+
+@media (min-width: 480px) {
+  .mobile-app {
+    height: 90vh;
+    max-height: 880px;
+    border-radius: 36px;
+    border: var(--app-border);
+  }
+}
+
+/* ===================================================
+   HEADER (YUQORI QISM)
+   =================================================== */
+.app-header {
+  padding: 20px 20px 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: var(--bg-main);
+  z-index: 10;
+}
+
+.greeting-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  display: block;
+}
+
+.greeting-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.3px;
+}
+
+.header-action-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-card);
+  color: var(--accent-lime);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+body.light-mode .header-action-btn {
+  color: #d97706;
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+
+.header-action-btn:active {
+  transform: scale(0.92);
+}
+
+/* ===================================================
+   ASOSIY KONTENT MAYDONI
+   =================================================== */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 18px 105px 18px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.app-content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tab-page {
+  display: none;
+}
+
+.tab-page.active {
+  display: block;
+  animation: pageFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ===================================================
+   HERO CARD (NEON LAYM KARTA - BALANS VA BYUDJET)
+   =================================================== */
+.hero-card {
+  background: linear-gradient(135deg, #c5f13b 0%, #a4e427 100%);
+  color: var(--text-dark);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 28px rgba(197, 241, 59, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -30px;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-brand {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #0c0f14 !important;
+  opacity: 0.85;
+}
+
+.card-chip {
+  width: 32px;
+  height: 22px;
+  background: rgba(12, 15, 20, 0.2);
+  border: 1px solid rgba(12, 15, 20, 0.25);
+  border-radius: 5px;
+}
+
+.hero-card-balance {
+  margin-bottom: 14px;
+}
+
+.balance-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #0c0f14 !important;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.balance-value {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+  color: #0c0f14 !important;
+}
+
+/* Byudjet sarflanish ko'rsatkichi */
+.hero-budget-progress {
+  background: rgba(12, 15, 20, 0.12);
+  border-radius: 10px;
+  padding: 8px 10px;
+  margin-bottom: 14px;
+}
+
+.budget-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #0c0f14 !important;
+}
+
+.budget-progress-labels span {
+  color: #0c0f14 !important;
+}
+
+.hero-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(12, 15, 20, 0.2);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.hero-progress-fill {
+  height: 100%;
+  background-color: #0c0f14 !important;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.hero-card-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid rgba(12, 15, 20, 0.18);
+  padding-top: 10px;
+}
+
+.card-stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #0c0f14 !important;
+  opacity: 0.8;
+  white-space: nowrap;
+}
+
+.card-stat-value {
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #0c0f14 !important;
+}
+
+.card-stat-value.text-income {
+  color: #065f46 !important;
+}
+
+.card-stat-value.text-expense {
+  color: #991b1b !important;
+}
+
+/* ===================================================
+   OYLIK BYUDJET BOSHQARUVI KARTASI
+   =================================================== */
+.budget-control-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.budget-control-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budget-control-title {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: block;
+  font-weight: 500;
+}
+
+.budget-control-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent-lime);
+}
+
+.btn-budget-edit {
+  background: transparent;
+  border: 1px solid var(--accent-lime);
+  color: var(--accent-lime);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.btn-budget-edit:active {
+  background-color: var(--accent-lime-dim);
+}
+
+.budget-edit-form {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.budget-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.budget-input-wrapper input {
+  height: 40px;
+  font-size: 14px;
+}
+
+.btn-budget-save {
+  background-color: var(--accent-lime);
+  color: var(--text-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.budget-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   TEZKOR AMALLAR (QUICK ACTIONS)
+   =================================================== */
+.quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.quick-action-btn {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.quick-action-btn:active {
+  background-color: var(--bg-card-secondary);
+  border-color: var(--accent-lime);
+}
+
+.action-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.expense-icon-bg {
+  background-color: var(--color-expense-dim);
+  color: var(--color-expense);
+}
+
+.income-icon-bg {
+  background-color: var(--color-income-dim);
+  color: var(--color-income);
+}
+
+.action-btn-title {
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+}
+
+.action-btn-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+  display: block;
+}
+
+/* ===================================================
+   SEKSIYALAR VA MATNLAR
+   =================================================== */
+.section-block {
+  margin-bottom: 20px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.section-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.2px;
+}
+
+.see-all-btn {
+  background: none;
+  border: none;
+  color: var(--accent-lime);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.page-header-row {
+  margin-bottom: 18px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.page-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   FORMA VA INPUTLAR (TAB-ADD)
+   =================================================== */
+.form-container-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 22px 18px;
+}
+
+/* Chiqim / Kirim o'tkazgich (Toggle Switcher) */
+.type-toggle-container {
+  display: flex;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: 20px;
+}
+
+.type-toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.type-toggle-btn.active {
+  background-color: var(--accent-lime);
+  color: var(--text-dark);
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(197, 241, 59, 0.3);
+}
+
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  height: 48px;
+  padding: 0 16px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: var(--accent-lime);
+}
+
+select option {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+.btn-neon-action {
+  width: 100%;
+  height: 50px;
+  background-color: var(--accent-lime);
+  color: var(--text-dark);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 10px;
+  box-shadow: 0 6px 20px rgba(197, 241, 59, 0.28);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-neon-action:active {
+  background-color: var(--accent-lime-hover);
+  transform: scale(0.98);
+}
+
+.error-message {
+  display: none;
+  background-color: var(--danger-dim);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.error-message.active {
+  display: block;
+}
+
+/* ===================================================
+   MOLIYAVIY HISOBOT VA STATISTIKA (TAB-STATS)
+   =================================================== */
+
+/* Vaqt filtri (Week / Month / All) */
+.stats-period-switcher {
+  display: flex;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  margin-bottom: 18px;
+}
+
+.stats-period-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.stats-period-btn.active {
+  background-color: var(--accent-lime);
+  color: var(--text-dark);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(197, 241, 59, 0.3);
+}
+
+/* Donut Chart Card */
+.donut-chart-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  margin-bottom: 18px;
+}
+
+.card-mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+}
+
+.donut-sub-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.donut-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 24px 0;
+}
+
+@keyframes donutPop {
+  0% {
+    transform: scale(0.93);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.donut-chart {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: conic-gradient(var(--border-color) 0% 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: donutPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.4s ease;
+}
+
+.donut-hole {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.donut-center-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.donut-center-amount {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 2px 0;
+  word-break: break-word;
+}
+
+.donut-center-count {
+  font-size: 11px;
+  color: var(--accent-lime);
+  font-weight: 600;
+}
+
+/* Donut Legend (Toifalar ro'yxati) */
+.donut-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.donut-legend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.donut-legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+
+.legend-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.legend-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-amount {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.legend-percent {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.legend-bar-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-card-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.legend-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* KPIs */
+.stats-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.kpi-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.kpi-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.kpi-value {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent-lime);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kpi-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Telegram Hisobot tugmasi */
+.btn-share-report {
+  width: 100%;
+  padding: 14px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--accent-lime);
+  color: var(--accent-lime);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.btn-share-report:active {
+  background-color: var(--accent-lime-dim);
+}
+
+.finance-summary-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  margin-bottom: 20px;
+}
+
+.finance-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.finance-row-label {
+  color: var(--text-muted);
+}
+
+.finance-row-val {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.finance-row-val.text-income {
+  color: var(--color-income);
+}
+
+.finance-row-val.text-expense {
+  color: var(--color-expense);
+}
+
+.finance-row-val.text-bold {
+  font-weight: 700;
+}
+
+.finance-summary-row.highlight-row {
+  background-color: var(--bg-card-secondary);
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 4px 0;
+}
+
+.finance-divider {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 10px 0;
+}
+
+.finance-summary-row.total-balance-row {
+  padding-top: 4px;
+}
+
+.finance-summary-row.total-balance-row .finance-row-label {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 15px;
+}
+
+.finance-summary-row.total-balance-row .finance-row-val {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent-lime);
+}
+
+.categories-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+}
+
+.categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.category-name {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.category-values {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.category-amount {
+  font-weight: 600;
+  color: var(--accent-lime);
+  font-size: 14px;
+}
+
+.category-percent {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-card-secondary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent-lime);
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+/* ===================================================
+   TARIX VA FILTRLAR (TAB-HISTORY)
+   =================================================== */
+.type-filter-chips {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.type-chip {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.type-chip.active {
+  background-color: var(--accent-lime);
+  color: var(--text-dark);
+  border-color: var(--accent-lime);
+  box-shadow: 0 2px 10px rgba(197, 241, 59, 0.25);
+}
+
+.filter-section {
+  margin-bottom: 18px;
+}
+
+.filter-chips-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.filter-chips-container::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  padding: 6px 12px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.filter-chip.active {
+  background-color: var(--text-main);
+  color: var(--text-dark);
+  border-color: var(--text-main);
+}
+
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@keyframes itemAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.expense-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  animation: itemAppear 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: transform 0.22s ease, opacity 0.22s ease, max-height 0.25s ease, margin 0.25s ease, padding 0.25s ease, border-color 0.15s ease;
+}
+
+.expense-item:hover {
+  border-color: rgba(197, 241, 59, 0.35);
+}
+
+.expense-item.deleting {
+  opacity: 0 !important;
+  transform: translateX(40px) scale(0.92) !important;
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  border-width: 0 !important;
+  overflow: hidden !important;
+}
+
+.expense-item.item-income {
+  border-left: 3px solid var(--color-income);
+}
+
+.expense-item.item-expense {
+  border-left: 3px solid var(--border-color);
+}
+
+.expense-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.category-icon-indicator {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background-color: var(--bg-card-secondary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-lime);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.category-icon-indicator.income-indicator {
+  color: var(--color-income);
+  background-color: var(--color-income-dim);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.expense-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.expense-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.expense-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.expense-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.expense-sum {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.expense-sum.sum-income {
+  color: var(--color-income);
+}
+
+.btn-delete {
+  background: none;
+  border: none;
+  color: #ef4444;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 4px;
+  cursor: pointer;
+  opacity: 0.8;
+  font-family: inherit;
+  transition: opacity 0.15s ease;
+}
+
+.btn-delete:hover,
+.btn-delete:active {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.empty-message {
+  background-color: var(--bg-card);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 30px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* ===================================================
+   SUZUVCHI PASTKI DOCK (BOTTOM NAVIGATION DOCK)
+   =================================================== */
+.bottom-nav {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.nav-dock {
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  max-width: 360px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  border-radius: 30px;
+  color: #64748b;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+}
+
+.nav-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-item:active .nav-icon-wrapper {
+  transform: scale(0.88);
+}
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+}
+
+.nav-item.active {
+  color: #0c0f14;
+}
+
+.nav-item.active .nav-icon-wrapper {
+  background-color: #0c0f14;
+  color: var(--accent-lime);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transform: scale(1.08);
+}
+
+.nav-item.active .nav-label {
+  color: #0c0f14;
+  font-weight: 700;
+}
+
+/* Tugmalar va chiplar uchun umumiy elastik bosilish */
+button, .filter-chip, .type-chip, .type-toggle-btn, .quick-action-btn, .header-action-btn {
+  transition: transform 0.14s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:active, .filter-chip:active, .type-chip:active, .type-toggle-btn:active, .quick-action-btn:active, .header-action-btn:active {
+  transform: scale(0.96);
+}
